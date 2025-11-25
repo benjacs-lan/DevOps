@@ -74,18 +74,22 @@ Service Type: LoadBalancer expuesto vía AWS ALB
 Estrategia de despliegue: Rolling Updates
 📂 Estructura del Repositorio
 ├── app/
-│   ├── main.py             # Entrypoint de Flask
-│   ├── Dockerfile          # Imagen optimizada
-│   └── requirements.txt    # Dependencias
+│   ├── main.py             # Entrypoint de la aplicación Flask
+│   ├── Dockerfile          # Imagen Docker optimizada
+│   └── requirements.txt    # Dependencias de la aplicación
+│
 ├── terraform/
-│   ├── main.tf             # Backend, Providers
-│   ├── vpc.tf              # Red: VPC, Subnets, IGW, NAT
-│   ├── eks.tf              # Control Plane y Node Groups
-│   └── variables.tf        # Variables de entorno
+│   ├── main.tf             # Backend remoto y proveedores
+│   ├── vpc.tf              # Componentes de red (VPC, Subnets, IGW, NAT)
+│   ├── eks.tf              # Cluster EKS y Node Groups
+│   └── variables.tf        # Variables de configuración
+│
 ├── k8s/
-│   ├── deployment.yaml     # Pods, réplicas y probes
-│   └── service.yaml        # LoadBalancer Service
-└── .github/workflows/      # Pipelines CI/CD
+│   ├── deployment.yaml     # Definición del Deployment y probes
+│   └── service.yaml        # Service tipo LoadBalancer
+│
+└── .github/
+    └── workflows/          # Pipelines de CI/CD (GitHub Actions)
 
 🚀 Guía de Despliegue
 ✔️ Prerrequisitos
