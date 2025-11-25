@@ -72,6 +72,7 @@ Liveness y Readiness Probes (self-healing)
 Service Type: LoadBalancer expuesto vía AWS ALB
 
 Estrategia de despliegue: Rolling Updates
+```bash
 📂 Estructura del Repositorio
 ├── app/
 │   ├── main.py             # Entrypoint de la aplicación Flask
@@ -90,7 +91,7 @@ Estrategia de despliegue: Rolling Updates
 │
 └── .github/
     └── workflows/          # Pipelines de CI/CD (GitHub Actions)
-
+```
 🚀 Guía de Despliegue
 ✔️ Prerrequisitos
 
@@ -103,6 +104,7 @@ Kubectl
 Docker
 
 🔹 Paso 1: Aprovisionar Infraestructura
+```bash
 cd terraform
 # 1. Inicializar Terraform y descargar módulos/proveedores
 terraform init
@@ -112,10 +114,11 @@ terraform plan
 
 # 3. Aplicar infraestructura (~15 mins)
 terraform apply -auto-approve
-
+```
 🔹 Paso 2: Configurar Acceso al Clúster
+ ```bash
 aws eks update-kubeconfig --region us-east-1 --name devops-project-cluster
-
+```
 🔹 Paso 3: Desplegar la Aplicación
 
 Asegúrate de tener una imagen publicada en ECR o DockerHub.
