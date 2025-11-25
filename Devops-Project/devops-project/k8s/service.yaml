@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  type: LoadBalancer # En Cloud (AWS/GCP) esto te da una IP pública real.
+  selector:
+    app: flask-app # <--- SERVICE DISCOVERY
+    # SRE: El servicio dice: "No me importa qué Pod sea, mientras tenga
+    # la etiqueta 'app: flask-app', le enviaré tráfico".
+    # Esto permite escalar de 3 a 100 réplicas sin cambiar la config de red.
+    
+  ports:
+    - protocol: TCP
+      port: 80         # Puerto de cara al mundo (Clean URL)
+      targetPort: 5000 # Puerto real de la app (Donde escucha Gunicorn/Flask)
